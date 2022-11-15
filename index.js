@@ -7,7 +7,13 @@ const const_app=const_express().use(const_body_parser.json());
 const const_token=process.env.CONST_TOKEN;     //THIS TOKEN TO SENDING THE REQUEST
 const const_mytoken=process.env.CONST_MY_TOKEN;//THIS TOKEN TO VERIFY THE WEBHOOK
 
-const_app.listen(8000||process.env.PORT,()=>{console.log("webhook is listening")});
+const const_port = process.env.PORT || 8000;
+
+const_app.listen(const_port,()=>{
+    console.log("webhook is listening at "+const_port);
+});
+
+
 const_app.get("/webhook",(req,res)=>{
     let var_mode=req.query["hub.mode"];
     let var_challenge=req.query["hub.challenge"];
